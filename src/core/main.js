@@ -292,7 +292,7 @@ class p5 {
         }
         if (!this._setupDone) {
           this._lastFrameTime = window.performance.now();
-          context._setup();
+          context._setup(this._setupProps);
           context._draw();
         }
       }
