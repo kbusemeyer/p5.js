@@ -34,7 +34,7 @@ import * as constants from './constants';
  * @return {p5}                 a p5 instance
  */
 class p5 {
-  constructor(sketch, node, sync) {
+  constructor(sketch, node, sync, setupProps) {
     //////////////////////////////////////////////
     // PUBLIC p5 PROPERTIES AND METHODS
     //////////////////////////////////////////////
@@ -217,6 +217,8 @@ class p5 {
     this._events.wheel = null;
     this._loadingScreenId = 'p5_loading';
 
+    this._setupProps = setupProps;
+
     // Allows methods to be registered on an instance that
     // are instance-specific.
     this._registeredMethods = {};
@@ -276,7 +278,7 @@ class p5 {
         context.preload();
         this._runIfPreloadsAreDone();
       } else {
-        this._setup();
+        this._setup(this._setupProps);
         this._draw();
       }
     };
@@ -290,7 +292,7 @@ class p5 {
         }
         if (!this._setupDone) {
           this._lastFrameTime = window.performance.now();
-          context._setup();
+          context._setup(this._setupProps);
           context._draw();
         }
       }
@@ -318,7 +320,7 @@ class p5 {
       context._setProperty('_preloadCount', context._preloadCount + 1);
     };
 
-    this._setup = () => {
+    this._setup = setupProps => {
       // Always create a default canvas.
       // Later on if the user calls createCanvas, this default one
       // will be replaced
@@ -345,7 +347,7 @@ class p5 {
       // Short-circuit on this, in case someone used the library in "global"
       // mode earlier
       if (typeof context.setup === 'function') {
-        context.setup();
+        context.setup(setupProps);
       }
 
       // unhide any hidden canvases that were created

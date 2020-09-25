@@ -159,6 +159,9 @@ export const TWO_PI = _PI * 2;
  * </code></div>
  */
 export const DEGREES = 'degrees';
+
+export const POLYGON = 'polygon';
+
 /**
  * Constant to be used with <a href="#/p5/angleMode">angleMode()</a> function, to set the mode which
  * p5.js interprates and calculates angles (either RADIANS or DEGREES).
