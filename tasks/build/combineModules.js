@@ -59,8 +59,9 @@ module.exports = function(grunt) {
       });
 
       if (isMin) {
-        browseified = browseified.exclude('../../docs/reference/data.json');
-        // .exclude('../../docs/parameterData.json');
+        browseified = browseified
+          .exclude('../../docs/reference/data.json')
+          .exclude('../../docs/parameterData.json');
       }
 
       const babelifyOpts = { plugins: ['static-fs'] };
