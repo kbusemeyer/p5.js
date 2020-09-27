@@ -4,7 +4,7 @@
   "scripts": {
     "grunt": "grunt",
     "prepare": "npm run build",
-    "build": "grunt combineModules:min:core/shape:core/friendly_errors:color:math:image uglify",
+    "build": "grunt combineModules:min:core/shape:color:math:image uglify",
     "dev": "grunt browserify:dev connect:yui watch:quick",
     "docs": "grunt yui",
     "docs:dev": "grunt yui:dev",
