@@ -1,9 +1,10 @@
 {
-  "name": "p5",
-  "repository": "processing/p5.js",
+  "name": "custom-p5",
+  "repository": "kbusemeyer/p5.js",
   "scripts": {
     "grunt": "grunt",
-    "build": "grunt build",
+    "prepare": "npm run build",
+    "build": "grunt combineModules:min:core/shape:accessibility:color:math:image uglify",
     "dev": "grunt browserify:dev connect:yui watch:quick",
     "docs": "grunt yui",
     "docs:dev": "grunt yui:dev",
@@ -93,6 +94,7 @@
     "license.txt",
     "lib/p5.min.js",
     "lib/p5.js",
+    "lib/modules/p5Custom.min.js",
     "lib/addons/p5.sound.js",
     "lib/addons/p5.sound.min.js",
     "translations/**"
